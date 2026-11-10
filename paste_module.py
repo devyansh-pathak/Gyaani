@@ -1,27 +1,29 @@
 import time
-
 import pyautogui
 import pyperclip 
 
-def paste_text(text):
+pyautogui.PAUSE = 0.05
+
+
+def paste_text(text: str):
+    """
+    Pastes given text into the active window at the cursor or replaces selected text.
+    Restores the user's previous clipboard content afterwards.
+    """
+    if not text or not str(text).strip():
+        return
+
     try:
         old_clipboard = pyperclip.paste()
     except Exception:
         old_clipboard = ""
 
     pyperclip.copy(text)
-    time.sleep(0.15)
+    time.sleep(0.05)
     pyautogui.hotkey("ctrl", "v")
-    time.sleep(0.25)
-    pyperclip.copy(old_clipboard)
+    time.sleep(0.15)
 
-# TEST 
-if __name__ == "__main__":
-    print("Open Notepad and click inside it. Pasting in 5 seconds...")
-    time.sleep(5)
-    paste_text("kal meeting reschedule kar dena")
-    paste_text(" कल मीटिंग रीशेड्यूल कर देना")
-    print("Done.")
-
-
-
+    try:
+        pyperclip.copy(old_clipboard)
+    except Exception:
+        pass

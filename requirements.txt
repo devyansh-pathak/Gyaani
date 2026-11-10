@@ -1,4 +1,15 @@
-keyboard
-sounddevice
-pyperclip
-pyautogui
+# Audio & Speech Recognition
+sounddevice>=0.5.0
+websockets>=12.0
+numpy>=1.26.0
+
+# LLM & AI Transformation
+groq>=0.11.0
+
+# Desktop Automation & Hotkeys
+keyboard>=0.13.5
+pyautogui>=0.9.54
+pyperclip>=1.8.2
+
+# Configuration
+python-dotenv>=1.0.1
